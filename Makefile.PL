@@ -22,10 +22,10 @@ my %WriteMakefileArgs = (
   'LICENSE' => 'perl',
   'NAME' => 'MongoDBx::Bread::Board::Container',
   'PREREQ_PM' => {
-    'Bread::Board' => '0.16',
+    'Bread::Board' => '0.17',
     'MongoDB' => '0.40'
   },
-  'VERSION' => '0.001',
+  'VERSION' => '0.002',
   'test' => {
     'TESTS' => 't/*.t'
   }

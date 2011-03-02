@@ -14,6 +14,6 @@ meta-spec:
   version: 1.4
 name: MongoDBx-Bread-Board-Container
 requires:
-  Bread::Board: 0.16
+  Bread::Board: 0.17
   MongoDB: 0.40
-version: 0.001
+version: 0.002

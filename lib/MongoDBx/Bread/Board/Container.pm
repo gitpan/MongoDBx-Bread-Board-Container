@@ -59,7 +59,7 @@ sub BUILD {
                             (shift)->param( $dbh )
                                    ->get_collection( $coll_name );
                         },
-                        dependencies => [ "../../../$dbh" ]
+                        dependencies => [ "../$dbh" ]
                     );
                 }
 
@@ -81,7 +81,7 @@ MongoDBx::Bread::Board::Container - An easy to use Bread::Board container for Mo
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
