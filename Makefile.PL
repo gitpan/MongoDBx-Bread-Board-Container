@@ -4,30 +4,30 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'An easy to use Bread::Board container for MongoDB',
-  'AUTHOR' => 'Stevan Little <stevan.little@iinteractive.com>',
-  'BUILD_REQUIRES' => {
-    'Test::More' => '0.88'
+  "ABSTRACT" => "An easy to use Bread::Board container for MongoDB",
+  "AUTHOR" => "Stevan Little <stevan.little\@iinteractive.com>",
+  "BUILD_REQUIRES" => {
+    "Test::More" => "0.88"
   },
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
   },
-  'DISTNAME' => 'MongoDBx-Bread-Board-Container',
-  'EXE_FILES' => [],
-  'LICENSE' => 'perl',
-  'NAME' => 'MongoDBx::Bread::Board::Container',
-  'PREREQ_PM' => {
-    'Bread::Board' => '0.17',
-    'MongoDB' => '0.40'
+  "DISTNAME" => "MongoDBx-Bread-Board-Container",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "MongoDBx::Bread::Board::Container",
+  "PREREQ_PM" => {
+    "Bread::Board" => "0.17",
+    "MongoDB" => "0.40"
   },
-  'VERSION' => '0.002',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "0.003",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 

@@ -14,6 +14,12 @@ has 'additional_connection_params' => (
     default => sub { +{} }
 );
 
+has 'mongo_connection_class' => (
+    is      => 'ro',
+    isa     => 'Str',
+    default => 'MongoDB::Connection'
+);
+
 has 'database_layout' => (
     is       => 'ro',
     isa      => 'HashRef[ ArrayRef[ Str ] ]',
@@ -23,15 +29,18 @@ has 'database_layout' => (
 sub BUILD {
     my $self = shift;
 
+    my $conn_class = $self->mongo_connection_class;
+
     container $self => as {
 
         service 'host' => $self->host;
 
         service 'connection' => (
-            class => 'MongoDB::Connection',
-            block => sub {
+            lifecycle => 'Singleton',
+            class     => $conn_class,
+            block     => sub {
                 my $s = shift;
-                MongoDB::Connection->new(
+                $conn_class->new(
                     host => $s->param('host'),
                     %{ $self->additional_connection_params }
                 );
@@ -77,11 +86,11 @@ no Moose; no Bread::Board; 1;
 
 =head1 NAME
 
-MongoDBx::Bread::Board::Container - An easy to use Bread::Board container for MongoDB
+MongoDBx::Bread::Board::Container
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 
@@ -164,6 +173,13 @@ L<MongoDB::Connection> constructor, just supply them
 here and they will get merged in with the C<host> and
 C<port> params.
 
+=head2 mongo_connection_class
+
+This is the name of the MongoDB connection class, it
+default to MongoDB::Connection, which is what you want
+to use most of the time, but if you want something else
+then you put it here.
+
 =head2 database_layout
 
 This is a data structure that represents the databases
@@ -182,7 +198,7 @@ Stevan Little <stevan.little@iinteractive.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Infinity Interactive, Inc..
+This software is copyright (c) 2012 by Infinity Interactive, Inc..
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
